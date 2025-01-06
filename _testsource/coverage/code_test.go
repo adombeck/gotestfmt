@@ -3,7 +3,7 @@ package example_test
 import (
 	"testing"
 
-	"github.com/gotesttools/example"
+	"github.com/adombeck/example"
 )
 
 func TestHello(t *testing.T) {

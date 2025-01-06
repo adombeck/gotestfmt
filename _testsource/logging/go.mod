@@ -1,4 +1,4 @@
-module github.com/gotesttools/example
+module github.com/adombeck/example
 
 go 1.17
 
