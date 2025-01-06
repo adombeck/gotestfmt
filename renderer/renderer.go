@@ -10,7 +10,7 @@ import (
 	"text/template"
 	"time"
 
-	"github.com/gotesttools/gotestfmt/v2/parser"
+	"github.com/ubuntu/gotestfmt/v2/parser"
 )
 
 // Render takes the two input channels from the parser and renders them into text output fragments.

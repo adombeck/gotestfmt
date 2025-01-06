@@ -1,6 +1,6 @@
 # gotestfmt: go test output for humans
 
-> ⚠️ **Action required:** gotestfmt has moved to the `GoTestTools` organization and you need to update your references. Please see the [announcement](https://github.com/GoTestTools/gotestfmt/discussions/46). The old repository will be deleted on January 1, 2023.
+> ⚠️ **Action required:** gotestfmt has moved to the `GoTestTools` organization and you need to update your references. Please see the [announcement](https://github.com/ubuntu/gotestfmt/discussions/46). The old repository will be deleted on January 1, 2023.
 
 Are you tired of scrolling through endless Golang test logs in GitHub Actions (or other CI systems)?
 
@@ -43,14 +43,14 @@ You can install `gotestfmt` using the following methods.
 
 ### Manually
 
-You can download the binary manually from the [releases section](https://github.com/GoTestTools/gotestfmt/releases). The binaries have no dependencies and should run without any problems on any of the listed operating systems.
+You can download the binary manually from the [releases section](https://github.com/ubuntu/gotestfmt/releases). The binaries have no dependencies and should run without any problems on any of the listed operating systems.
 
 ### Using `go install`
 
 You can install `gotestfmt` using the `go install` command:
 
 ```
-go install github.com/gotesttools/gotestfmt/v2/cmd/gotestfmt@latest
+go install github.com/ubuntu/gotestfmt/v2/cmd/gotestfmt@latest
 ```
 
 You can then use the `gotestfmt` command, provided that your Go `bin` directory is added to your system path.
@@ -60,7 +60,7 @@ You can then use the `gotestfmt` command, provided that your Go `bin` directory 
 You can also run `gotestfmt` in a container. For example:
 
 ```
-go test -json ./... | docker run ghcr.io/gotesttools/gotestfmt:latest
+go test -json ./... | docker run ghcr.io/ubuntu/gotestfmt:latest
 ```
 
 If you have a high volume of requests you may want to mirror the image to your own registry.
@@ -76,7 +76,7 @@ We have support for several CI systems, and you can also customize the output to
 
 ### GitHub Actions
 
-For GitHub Actions we provide [gotestfmt-action](https://github.com/gotesttools/gotestfmt-action), making it easy to use. Here's how you can set it up:
+For GitHub Actions we provide [gotestfmt-action](https://github.com/ubuntu/gotestfmt-action), making it easy to use. Here's how you can set it up:
 
 ```yaml
 jobs:
@@ -96,14 +96,14 @@ jobs:
 
       # Install gotestfmt on the VM running the action.
       - name: Set up gotestfmt
-        uses: gotesttools/gotestfmt-action@v2
+        uses: ubuntu/gotestfmt-action@v2
         with:
           # Optional: pass GITHUB_TOKEN to avoid rate limiting.
           token: ${{ secrets.GITHUB_TOKEN }}
 
       # Alternatively, install using go install
       - name: Set up gotestfmt
-        run: go install github.com/gotesttools/gotestfmt/v2/cmd/gotestfmt@latest
+        run: go install github.com/ubuntu/gotestfmt/v2/cmd/gotestfmt@latest
 
       # Run tests with nice formatting. Save the original log in /tmp/gotest.log
       - name: Run tests
@@ -127,11 +127,11 @@ In GitHub Actions mode gotestfmt will look for the rendering templates in the `.
 
 ### GitLab CI
 
-There are multiple ways to run gotestfmt in GitLab CI. You can simply download it from the [releases section](https://github.com/gotesttools/gotestfmt/releases) and use it that way, but we would recommend creating a custom container image to run the tests as follows:
+There are multiple ways to run gotestfmt in GitLab CI. You can simply download it from the [releases section](https://github.com/ubuntu/gotestfmt/releases) and use it that way, but we would recommend creating a custom container image to run the tests as follows:
 
 ```Dockerfile
 # Include gotestfmt as a base image for building
-FROM ghcr.io/gotesttools/gotestfmt:latest AS gotestfmt
+FROM ghcr.io/ubuntu/gotestfmt:latest AS gotestfmt
 
 # Use the golang base image
 FROM golang
@@ -194,7 +194,7 @@ jobs:
           version: 19.03.13
       - run:
           name: Run tests
-          command: go test -json -v ./... 2>&1 | tee /tmp/gotest.log | docker run -i ghcr.io/gotesttools/gotestfmt:latest
+          command: go test -json -v ./... 2>&1 | tee /tmp/gotest.log | docker run -i ghcr.io/ubuntu/gotestfmt:latest
       - store_artifacts:
           path: /tmp/gotest.log
           destination: gotest.log
@@ -228,7 +228,7 @@ The `Package` items have the following format:
 
 | Variable   | Type     | Description                                                          |
 |------------|----------|----------------------------------------------------------------------|
-| `.Package` | `string` | Name of the package. (e.g. `github.com/gotesttools/gotestfmt`) |
+| `.Package` | `string` | Name of the package. (e.g. `github.com/ubuntu/gotestfmt`) |
 | `.Version` | `string` | Version of the package. (e.g. `v1.0.0`)                              |
 | `.Failed`  | `bool`   | If the package download has failed.                                  |
 | `.Reason`  | `string` | Text explaining the failure.                                         |
