@@ -1,6 +1,6 @@
-# gotestfmt: go test output for humans
+> ⚠️ This is a temporary fork of https://github.com/GoTestTools/gotestfmt, Canonical does not plan to keep maintain this fork
 
-> ⚠️ **Action required:** gotestfmt has moved to the `GoTestTools` organization and you need to update your references. Please see the [announcement](https://github.com/adombeck/gotestfmt/discussions/46). The old repository will be deleted on January 1, 2023.
+# gotestfmt: go test output for humans
 
 Are you tired of scrolling through endless Golang test logs in GitHub Actions (or other CI systems)?
 
